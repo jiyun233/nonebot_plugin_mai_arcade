@@ -97,7 +97,7 @@ nonebot-plugin-mai-arcade 是一款强大的基于`本地&云端数据`的多功
 </details>
 
 <details>
-<summary><strong>🗺️ 地图系统</strong>：使用<code>mai/（添加）机厅地图</code>指令可添加、查看指定机厅音游地图网址，支持<a href="https://nearcade.phizone.cn/">Nearcade</a>和<a href="https://map.bemanicn.com">BEMANICN全国音游地图</a>
+<summary><strong>🗺️ 地图系统</strong>：使用<code>mai/（添加）机厅地图</code>指令可添加、查看指定机厅音游地图网址，支持<a href="https://nearcade.cn/">Nearcade</a>和<a href="https://map.bemanicn.com">BEMANICN全国音游地图</a>
 <br><br><strong>（注意：只有添加地图网址的机厅才可以使用云端同步、实时建议功能）</strong></summary>
 
 ![image](https://github.com/YuuzukiRin/nonebot_plugin_mai_arcade/blob/main/docs/mapurl_setup.png)
@@ -237,7 +237,7 @@ COUNT_SMART_TIPS='[{"max_minutes": 0, "tip": "✅ 无需等待，快去出勤吧
 
 ## ✨ 特别感谢
 
-- [Nearcade](https://nearcade.phizone.cn) 提供的优秀机厅数据平台和API支持
+- [Nearcade](https://nearcade.cn) 提供的优秀机厅数据平台和API支持
 - [Koileo](https://github.com/Koileo) 对项目Nearcade云同步功能及诸多模块的重要贡献和支持
 - [Adsicmes](https://github.com/Adsicmes) 对命令前缀问题的修复改进
 - [Yzfoil/nonebot_plugin_maimai_go_down_system](https://github.com/Yzfoil/nonebot_plugin_maimai_go_down_system) 提供的灵感与代码支持
