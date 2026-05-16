@@ -177,7 +177,7 @@ async def handle_sv_arcade(bot: Bot, event: GroupMessageEvent, state: T_State):
     }
 
     try:
-        conn = http.client.HTTPSConnection("nearcade.phizone.cn", timeout=10)
+        conn = http.client.HTTPSConnection("nearcade.cn", timeout=10)
         conn.request("POST", f"/api/shops/bemanicn/{shop_id}/attendance", payload, headers)
         res = conn.getresponse()
         raw_data = res.read().decode("utf-8")
