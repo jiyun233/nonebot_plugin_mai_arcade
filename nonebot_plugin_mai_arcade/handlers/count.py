@@ -142,14 +142,11 @@ async def handle_sv_arcade(bot: Bot, event: GroupMessageEvent, state: T_State):
         wait_time_min = int(min_rounds * per_round_minutes)
         wait_time_max = int(max_rounds * per_round_minutes)
 
-        if wait_time_avg <= 20:
-            smart_tip = "✅ 舞萌启动！"
-        elif 20 < wait_time_avg <= 40:
-            smart_tip = "🕰️ 小排队还能忍"
-        elif 40 < wait_time_avg <= 90:
-            smart_tip = "💀 DBD，纯折磨，建议换店"
-        else:  # > 90
-            smart_tip = "🪦 建议回家（或者明天再来）"
+        smart_tip = config.count_smart_tips[-1].tip
+        for rule in config.count_smart_tips:
+            if wait_time_avg <= rule.max_minutes:
+                smart_tip = rule.tip
+                break
 
         msg = (
             f"📍 {name}  人数已更新为 {new_num}\n"
@@ -159,11 +156,11 @@ async def handle_sv_arcade(bot: Bot, event: GroupMessageEvent, state: T_State):
             f"💡 {smart_tip}"
         )
     else:
-        # 无需等待
+        smart_tip = config.count_smart_tips[0].tip
         msg = (
             f"📍 {name}  人数已更新为 {new_num}\n"
             f"🕹️ 机台数量：{coutnum} 台（每轮 {players_per_round} 人）\n\n"
-            f"✅ 无需等待，快去出勤吧！"
+            f"{smart_tip}"
         )
 
     payload = json.dumps({
@@ -282,14 +279,11 @@ async def handle_sv_arcade_on_fullmatch(bot: Bot, event: Event, state: T_State):
                         wait_time_min = int(min_rounds * per_round_minutes)
                         wait_time_max = int(max_rounds * per_round_minutes)
 
-                        if wait_time_avg <= 20:
-                            smart_tip = "✅ 舞萌启动！"
-                        elif 20 < wait_time_avg <= 40:
-                            smart_tip = "🕰️ 小排队还能忍"
-                        elif 40 < wait_time_avg <= 90:
-                            smart_tip = "💀 DBD，纯折磨，建议换店"
-                        else:  # > 90
-                            smart_tip = "🪦 建议回家（或者明天再来）"
+                        smart_tip = config.count_smart_tips[-1].tip
+                        for rule in config.count_smart_tips:
+                            if wait_time_avg <= rule.max_minutes:
+                                smart_tip = rule.tip
+                                break
 
                         msg = (
                             f"📍 {found_arcade}  人数为 {current_num}\n"
@@ -299,11 +293,11 @@ async def handle_sv_arcade_on_fullmatch(bot: Bot, event: Event, state: T_State):
                             f"💡 {smart_tip}"
                         )
                     else:
-                        # 无需等待
+                        smart_tip = config.count_smart_tips[0].tip
                         msg = (
                             f"📍 {found_arcade}  人数为 {current_num}\n"
                             f"🕹️ 机台数量：{coutnum} 台（每轮 {players_per_round} 人）\n\n"
-                            f"✅ 无需等待，快去出勤吧！"
+                            f"{smart_tip}"
                         )
 
                     if last_updated_at and last_updated_by:
@@ -333,14 +327,11 @@ async def handle_sv_arcade_on_fullmatch(bot: Bot, event: Event, state: T_State):
                         wait_time_min = int(min_rounds * per_round_minutes)
                         wait_time_max = int(max_rounds * per_round_minutes)
 
-                        if wait_time_avg <= 20:
-                            smart_tip = "✅ 舞萌启动！"
-                        elif 20 < wait_time_avg <= 40:
-                            smart_tip = "🕰️ 小排队还能忍"
-                        elif 40 < wait_time_avg <= 90:
-                            smart_tip = "💀 DBD，纯折磨，建议换店"
-                        else:  # > 90
-                            smart_tip = "🪦 建议回家（或者明天再来）"
+                        smart_tip = config.count_smart_tips[-1].tip
+                        for rule in config.count_smart_tips:
+                            if wait_time_avg <= rule.max_minutes:
+                                smart_tip = rule.tip
+                                break
 
                         msg = (
                             f"📍 {found_arcade}  人数为 {current_num}\n"
@@ -350,11 +341,11 @@ async def handle_sv_arcade_on_fullmatch(bot: Bot, event: Event, state: T_State):
                             f"💡 {smart_tip}"
                         )
                     else:
-                        # 无需等待
+                        smart_tip = config.count_smart_tips[0].tip
                         msg = (
                             f"📍 {found_arcade}  人数为 {current_num}\n"
                             f"🕹️ 机台数量：{coutnum} 台（每轮 {players_per_round} 人）\n\n"
-                            f"✅ 无需等待，快去出勤吧！"
+                            f"{smart_tip}"
                         )
 
                     if last_updated_at and last_updated_by:

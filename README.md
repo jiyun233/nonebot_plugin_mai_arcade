@@ -159,6 +159,20 @@ clone 本项目，将nonebot_plugin_mai_arcade文件夹放入您的nonebot2插�
 
 </details>
 
+## ⚙️ 配置
+
+在 NoneBot2 项目的 `.env` 文件中添加以下可选配置项（不填则使用默认值）：
+
+```env
+# Nearcade API 令牌（不填则使用默认token）
+NEARCADE_API_TOKEN=your_token_here
+
+# 排队等待时间提示语（可选，不填使用默认值）
+# 规则列表按 max_minutes 升序排列，匹配第一个 wait_time_avg <= max_minutes 的规则
+# max_minutes=0 表示无需等待时的提示
+COUNT_SMART_TIPS='[{"max_minutes": 0, "tip": "✅ 无需等待，快去出勤吧！"}, {"max_minutes": 20, "tip": "✅ 舞萌启动！"}, {"max_minutes": 40, "tip": "🕰️ 小排队还能忍"}, {"max_minutes": 90, "tip": "💀 DBD，纯折磨，建议换店"}, {"max_minutes": 9999, "tip": "🪦 建议回家（或者明天再来）"}]'
+```
+
 ## 🎉 使用
 
 使用 `机厅帮助/arcade help` 指令获取指令表
