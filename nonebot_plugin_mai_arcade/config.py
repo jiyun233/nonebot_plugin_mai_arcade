@@ -3,6 +3,9 @@
 """
 import json
 from pathlib import Path
+from pydantic import (
+    BaseModel
+)
 import nonebot
 require = nonebot.require
 require("nonebot_plugin_localstore")
@@ -39,3 +42,9 @@ async def re_write_json():
 
 # 初始化加载数据
 load_data()
+
+class Config(BaseModel):
+    """插件配置类
+    nearcade_api_token: Nearcade 开发者 API令牌
+    """
+    nearcade_api_token: str = "nk_eimMHQaX7F6g0LlLg6ihhweRQTyLxUTVKHuIdijadC"

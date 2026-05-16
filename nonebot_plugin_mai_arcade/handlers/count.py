@@ -8,11 +8,12 @@ import math
 import datetime
 import http.client
 
-from nonebot import on_regex, on_command, on_endswith
+from nonebot import on_regex, get_plugin_config, on_endswith
 from nonebot.adapters.onebot.v11 import Bot, GroupMessageEvent, MessageSegment, Event
 from nonebot.params import T_State
 
-from ..config import data_json, re_write_json, block_group
+from ..config import Config, data_json, re_write_json, block_group
+config = get_plugin_config(Config)
 
 
 sv_arcade = on_regex(r"^([\u4e00-\u9fa5\w]+)\s*(==\d+|={1}\d+|\+\+\d+|--\d+|\+\+|--|[+-]?\d+)?$", priority=100)
@@ -171,7 +172,7 @@ async def handle_sv_arcade(bot: Bot, event: GroupMessageEvent, state: T_State):
         ]
     })
     headers = {
-        'Authorization': 'Bearer nk_eimMHQaX7F6g0LlLg6ihhweRQTyLxUTVKHuIdijadC',
+        f'Authorization': f'Bearer {config.nearcade_api_token}',
         'Content-Type': 'application/json'
     }
 
